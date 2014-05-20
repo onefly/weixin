@@ -26,7 +26,7 @@ import com.zouqi.wx.message.response.TextMessage;
 /**
  * 消息工具类
  * 
- * @author liufeng
+ * @author caozf
  * @date 2013-05-19
  */
 public class MessageUtil {
