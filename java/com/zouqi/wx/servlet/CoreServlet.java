@@ -25,22 +25,10 @@ public class CoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
 	private static Logger log = Logger.getLogger(CoreServlet.class);
 
-	public void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		log.debug("request.getMethod()="+request.getMethod());
-		if ("GET".equalsIgnoreCase(request.getMethod())) {
-			System.out.println("请求验证");
-			processSign(request, response);
-		} else {
-			System.out.println("数据处理");
-			processMessage(request, response);
-		}
-	}
-
 	/**
 	 * 确认请求来自微信服务器
 	 */
-	public void processSign(HttpServletRequest request,
+	public void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 微信加密签名
 		String signature = request.getParameter("signature");
@@ -63,7 +51,7 @@ public class CoreServlet extends HttpServlet {
 	/**
 	 * 处理微信服务器发来的消息
 	 */
-	public void processMessage(HttpServletRequest request,
+	public void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
 		request.setCharacterEncoding("UTF-8");
